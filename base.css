@@ -5,6 +5,10 @@ body {
     font-family: "Trebuchet MS";
 }
 
+input {
+    outline: none;
+}
+
 input[readonly] {
     background: #f4f4f4;
 }
