@@ -1,0 +1,12 @@
+/* vim:set et ts=8 ai sw=4 sts=4: */
+
+.problem input {
+    width: 2em;
+    border-radius: 0.5em;
+    border: 1px solid black;
+    box-shadow: inset 2px 2px lightgray;
+    padding: 0.3em 0.7em;
+    text-align: center;
+    margin: 0 1.1em;
+}
+

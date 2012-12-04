@@ -1,0 +1,53 @@
+/* vim:set et ts=8 ai sw=4 sts=4: */
+
+body {
+    font-size: 20px;
+    font-family: "Trebuchet MS";
+}
+
+input[readonly] {
+    background: #f4f4f4;
+}
+
+input:focus {
+    background: #ff5;
+}
+
+.problem {
+    font-weight: bold;
+    border: 1px solid green;
+    border-radius: 10px;
+    margin: 40px;
+    padding: 1em;
+    text-align: center;
+}
+
+.currentProblem {
+    font-size: 200%;
+    border-width: 5px;
+    border-color: green;
+    border-radius: 30px;
+}
+
+.problemNowSolved {
+    background: lightgreen;
+    animation-iteration-count: 1;
+    animation-duration: 0.75s;
+    animation-name: now-solved;
+}
+
+@keyframes now-solved {
+  from {
+      background: lightgreen;
+  }
+
+  50% {
+      background: green;
+  }
+ 
+  to {
+      background: lightgreen;
+  }
+}
+
+
