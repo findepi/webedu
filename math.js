@@ -2,7 +2,7 @@
 
 (function($) {
 
-    var operators = ['+']
+    var operators = ['+', '+', '-']
         , numbersMin = 0
         , numbersMax = 7
 
@@ -32,7 +32,10 @@
             options = options || {}
             var currentProblem = $(options.currentProblem || '#currentProblem')
                 , previousProblems = $(options.previousProblems || '#previousProblems')
+                , fieldNames = ['left', 'right', 'result']
                 , chosenop
+                , values = {}
+                , whichEmpty
 
             currentProblem.empty()
             chosenop = operators[jsedu.random(0, operators.length)]
@@ -45,19 +48,27 @@
                 .append('=')
                 .append('<input name="result" />')
 
-            currentProblem.find('input[name=left]')
-                .attr('readonly', 'readonly').val(jsedu.random(numbersMin, numbersMax))
-            currentProblem.find('input[name=right]')
-                .attr('readonly', 'readonly').val(jsedu.random(numbersMin, numbersMax))
+            values.left = jsedu.random(numbersMin, numbersMax)
+            values.right = jsedu.random(numbersMin, (chosenop == '-') ? values.left : numbersMax)
+            values.result = eval('' + values.left + chosenop + values.right)
+            whichEmpty = fieldNames[jsedu.random(0, fieldNames.length)]
 
+            for (var k in values) {
+                if (whichEmpty != k) {
+                    currentProblem.find('input[name=' + k + ']')
+                        .attr('readonly', 'readonly').val(values[k])
+                }
+            }
+
+            currentProblem.find('input[name=' + whichEmpty + ']')
             // TODO this makes F5 not to work .... sad thing
-            currentProblem.find('input').numeric()
+                .numeric()
+                .focus()
 
             currentProblem.data('validation', validateArithemtic)
             currentProblem.data('newProblem', function() {
                 jsedu.runArithmetic(options)
             })
-            currentProblem.find('input:empty').focus()
         }
     })
 
