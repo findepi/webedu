@@ -10,3 +10,7 @@
     margin: 0 1.1em;
 }
 
+.problem .op, .problem .eq {
+    display: inline-block;
+    width: 1em;
+}

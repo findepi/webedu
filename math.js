@@ -43,9 +43,9 @@
             currentProblem
                 .append('<input type="hidden" name="operand" value="' + chosenop + '" />')
                 .append('<input name="left" />')
-                .append(chosenop)
+                .append($('<span class="op" />').text(chosenop))
                 .append('<input name="right" />')
-                .append('=')
+                .append('<span class="eq"/>=</span>')
                 .append('<input name="result" />')
 
             values.left = jsedu.random(numbersMin, numbersMax)
